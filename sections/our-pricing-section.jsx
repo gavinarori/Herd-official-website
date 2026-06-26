@@ -3,28 +3,25 @@ import {
   PlusIcon, MinusIcon, StarIcon, ShieldCheckIcon, BarChart3Icon,
   HeartPulseIcon, DnaIcon, PackageIcon, UsersIcon, GlobeIcon,
   ZapIcon, TrendingUpIcon, BellIcon, LockIcon, Share2Icon,
-  ActivityIcon, LeafIcon, VeganIcon,
+  ActivityIcon, LeafIcon,
 } from 'lucide-react';
 import Link from 'next/link';
-
 
 function SectionTitle({ eyebrow, title, description, center = true }) {
   return (
     <div className={`max-w-2xl ${center ? 'mx-auto text-center' : ''}`}>
       {eyebrow && (
-        <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-primary">
-          <LeafIcon className="size-3" />
+        <span className="stamp-label inline-flex items-center gap-2 border-b-2 border-primary pb-1 text-xs text-primary">
           {eyebrow}
         </span>
       )}
-      <h2 className="mt-3 text-3xl font-bold text-foreground md:text-4xl">{title}</h2>
+      <h2 className="mt-4 text-3xl font-bold text-foreground md:text-4xl">{title}</h2>
       {description && (
         <p className="mt-4 text-base/7 text-muted-foreground">{description}</p>
       )}
     </div>
   );
 }
-
 
 export function OurPricingSection() {
   const plans = [
@@ -76,7 +73,7 @@ export function OurPricingSection() {
       ],
     },
   ];
- 
+
   return (
     <section id="pricing" className="flex flex-col items-center justify-center py-24 px-4 md:px-8">
       <SectionTitle
@@ -84,18 +81,18 @@ export function OurPricingSection() {
         title="Straightforward pricing, no surprises"
         description="Start free and scale as your operation grows. Every plan includes a 30-day trial of Pro features."
       />
- 
-      <div className="mt-12 grid w-full max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+
+      <div className="mt-12 grid w-full max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 items-start">
         {plans.map((plan) => (
           <div
             key={plan.name}
-            className={`group relative flex flex-col rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1
+            className={`group relative flex flex-col p-6 transition-all duration-300 hover:-translate-y-1
               ${plan.featured
-                ? 'border-primary/50 bg-primary/5 shadow-lg'
-                : 'border-border bg-card hover:shadow-md'}`}
+                ? 'punch-hole tag-notch border-2 border-primary pl-9 bg-primary/[0.04] shadow-lg md:-mt-3 md:mb-3'
+                : 'border border-border bg-card hover:shadow-md'}`}
           >
             {plan.featured && (
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground shadow">
+              <div className="absolute -top-3 right-5 bg-rust px-3 py-1 stamp-label text-[10px] text-rust-foreground shadow">
                 Most Popular
               </div>
             )}
@@ -103,25 +100,25 @@ export function OurPricingSection() {
               <h3 className="text-base font-semibold text-foreground">{plan.name}</h3>
               <p className="text-sm text-muted-foreground">{plan.desc}</p>
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-3xl font-bold text-foreground">{plan.price}</span>
+                <span className="stat-number text-3xl font-bold text-foreground">{plan.price}</span>
                 <span className="text-sm text-muted-foreground">{plan.priceNote}</span>
               </div>
             </div>
- 
+
             <a
               href="https://livestock-mangement-system.vercel.app/"
-              className={`mt-5 w-full rounded-xl py-2.5 text-center text-sm font-semibold transition
+              className={`mt-5 w-full py-2.5 text-center text-sm font-semibold transition
                 ${plan.featured
                   ? 'bg-primary text-primary-foreground hover:opacity-90'
                   : 'border border-border bg-card text-foreground hover:bg-muted'}`}
             >
               {plan.cta}
             </a>
- 
+
             <ul className="mt-6 space-y-3">
               {plan.features.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                  <div className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full
+                  <div className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center
                     ${plan.featured ? 'bg-primary' : 'bg-muted-foreground/20'}`}>
                     <CheckIcon className={`size-2.5 ${plan.featured ? 'text-primary-foreground' : 'text-muted-foreground'}`} strokeWidth={3} />
                   </div>
@@ -132,11 +129,10 @@ export function OurPricingSection() {
           </div>
         ))}
       </div>
- 
+
       <p className="mt-8 text-sm text-muted-foreground text-center">
         All plans include SSL encryption, daily backups, and GDPR compliance. No contracts, cancel anytime.
       </p>
     </section>
   );
 }
- 
